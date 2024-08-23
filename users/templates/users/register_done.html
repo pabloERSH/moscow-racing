@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    <link rel="stylesheet" type="text/css" href="{% static 'users/css/users.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="form-container">
+    <h3>Вы успешно зарегистрировались!!! Теперь вы можете авторизоваться по <a href="{% url 'users:login' %}">ссылке</a>!</h3>
+</div>
+
+{% endblock %}

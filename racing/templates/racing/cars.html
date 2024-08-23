@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <link rel="stylesheet" type="text/css" href="{% static 'racing/css/cars.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <h1>Доступные автомобили для аренды</h1>
+        <div class="car-list">
+            {%for car in cars_info%}
+                <div class="car">
+                    <img src="{% static car.Img_of_car %}" alt="Фото автомобиля">
+                    <p><strong>{{ car.Car_name }}</strong></p>
+                    <p class="description">Мощность, л.с.: {{ car.Power }}</p>
+                    <p class="description">Разгон до 100 км/ч, сек.: {{ car.Go_to_100 }}</p>
+                    <p class="description">Максимальная скорость, км/ч: {{ car.Max_speed }}</p>
+                    <p class="description">Тип КПП: {{ car.Type_of_gsb }}</p>
+                    <p class="description">Тип привода: {{ car.Type_of_drive }}</p>
+                    <div data-ajax="true" class="rating rating-set" id="{{car.id}}">
+                        <div class="rating-body">
+                            <div class="rating-active"></div>
+                            <div class="rating-items">
+                                <input type="radio" class="rating-item" name="rating" value="1">
+                                <input type="radio" class="rating-item" name="rating" value="2">
+                                <input type="radio" class="rating-item" name="rating" value="3">
+                                <input type="radio" class="rating-item" name="rating" value="4">
+                                <input type="radio" class="rating-item" name="rating" value="5">
+                            </div>
+                        </div>
+                        <div class="rating-value">{{car.avg_sum}}</div>
+                        <label for="count" class="comment">Всего голосов:</label>
+                        <div class="rating-count" id="count">{{car.count}}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="rent-button">
+        <button class="button" onclick="location.href='/rent'">Перейти к аренде</button>
+    </div>
+    <script src="{% static 'racing/js/cars1.js' %}"> </script>
+{% endblock %}

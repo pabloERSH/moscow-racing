@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    {% block title %} {% endblock %}
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="menu">
+                {% for key, value in menu.items %}
+                    <li><a href='{{value}}'>{{ key }}</a></li>
+                {% endfor %}
+                {% if user.is_authenticated %}
+                <form method="post" action="{% url 'users:logout' %}">
+                    {% csrf_token %}
+                    <li class="last">{{ user.username }} | <button type="submit">Выйти</button></li>
+                </form>
+                {% else %}
+                    <li class="last"><a href="{% url 'users:login' %}">Войти</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    {% block content %} {% endblock %}
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    <link rel="stylesheet" type="text/css" href="{% static 'racing/css/track.css' %}">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=e6f736a4-f6f0-4b40-bd7a-df130aff70ae&lang=ru_RU" type="text/javascript">
+    </script>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <h1>Гоночный трек</h1>
+
+        <div class="track-images">
+            <img src="{% static 'racing/images/track1.jpg' %}" alt="Фото трека" class="track-image">
+            <img src="{% static 'racing/images/track2.jpg' %}" alt="Фото трека" class="track-image">
+        </div>
+
+        <div class="track-info">
+            <p>Четыре километра скорости — это конфигурация Grand Prix,
+                предназначенная для автомобильных гонок и способная «выдержать» гонки Формулы 1.</p>
+            <p>Общая площадь: Автодром: 720 000 м² Паддок: 52 000 м²</p>
+            <p> Ширина: 12-21 м
+            Стартовая линия: 15 м</p>
+        </div>
+        <div class="video">
+            <h3><strong>Пример заезда:</strong></h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/feME2byRVOo?si=kBOmw4JPqPBncEVM"
+                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write;
+                encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <h3><strong>Мы на карте:</strong></h3>
+        <div class="map" id="map" style="width: 600px; height: 400px"></div>
+
+
+    </div>
+    <script src="{% static 'racing/js/track.js' %}" type="text/javascript"></script>
+
+{% endblock %}

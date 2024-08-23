@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    <link rel="stylesheet" type="text/css" href="{% static 'racing/css/rent.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    {% if success %}
+        <h5 style="color: green;">{{ msg }}</h5>
+    {% else %}
+        <h5 style="color: red;">{{ msg }}</h5>
+    {% endif %}
+    <div class="form-container">
+        <h1>Аренда трека</h1>
+        <form novalidate id="form" action="" method="post" class="form-rent">
+            {% csrf_token %}
+            <p class="form-p" id="{{ form.ClientName.id_for_label }}"><label class="form-label" for="{{ form.ClientName.id_for_label }}">{{form.ClientName.label}}</label>{{ form.ClientName }}</p>
+            <span id="ClientNameError" class="error"></span>
+            <p class="form-p" id="{{ form.ClientEmail.id_for_label }}"><label class="form-label" for="{{ form.ClientEmail.id_for_label }}">{{form.ClientEmail.label}}</label>{{ form.ClientEmail }}</p>
+            <span id="ClientEmailError" class="error"></span>
+            <p class="form-p" id="{{ form.RentDate.id_for_label }}"><label class="form-label" for="{{ form.RentDate.id_for_label }}">{{form.RentDate.label}}</label>{{ form.RentDate }}</p>
+            <span id="RentDateError" class="error"></span>
+            <p class="form-p" id="{{ form.RentTime.id_for_label }}"><label class="form-label" for="{{ form.RentTime.id_for_label }}">{{form.RentTime.label}}</label>{{ form.RentTime }}</p>
+            <span id="RentTimeError" class="error"></span>
+            <p class="form-p" id="{{ form.Car.id_for_label }}"><label class="form-label" for="{{ form.Car.id_for_label }}">{{form.Car.label}}</label>{{ form.Car }}</p>
+            <span id="CarError" class="error"></span>
+            <button type="submit" id="rent-button">Отправить</button>
+        </form>
+    </div>
+{% endblock %}
