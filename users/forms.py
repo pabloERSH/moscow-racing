@@ -48,6 +48,6 @@ class RegisterUserForm(forms.ModelForm):
 
     def clean_email(self):
         email = self.cleaned_data['email']
-        if get_user_model().objects.filter(email=email).exists():
+        if email and get_user_model().objects.filter(email=email).exists():
             raise forms.ValidationError("Аккаунт с таким Email уже существует!")
         return email

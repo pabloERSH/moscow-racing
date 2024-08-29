@@ -16,7 +16,7 @@
         <input type="hidden" name="next" value="{{ next }}">
         <div class="form-error">{{ form.non_field_errors }}</div>
         {% for f in form %}
-            <p id="{{ f.id_for_label }}"><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</p>
+            <p id="{{ f.id_for_label }}"><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}: </label>{{ f }}</p>
             <div class="form-error">{{ f.errors }}</div>
         {% endfor %}
         <p><a href="{% url 'users:register' %}">Нет аккаунта? Регистрация</a></p>

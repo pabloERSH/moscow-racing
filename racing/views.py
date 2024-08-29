@@ -1,4 +1,5 @@
 import json
+from idlelib.iomenu import errors
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -33,6 +34,7 @@ def home(request):
 @login_required
 def rent_form(request):
     msg = ''
+    form_errors = []
     success = False
     if request.method == 'POST':
         date = request.POST.get('RentDate')
@@ -48,6 +50,8 @@ def rent_form(request):
                 success = True
             else:
                 msg = f'На {date} {time} машина {car} уже забронирована, выберите другую машину!'
+        else:
+            form_errors = form.errors
     else:
         form = AddRental()
     data = {
@@ -55,7 +59,8 @@ def rent_form(request):
         'menu': menu,
         'msg': msg,
         'form': form,
-        'success': success
+        'success': success,
+        'form_errors': form_errors
     }
     return render(request, 'racing/rent.html', context=data)
 

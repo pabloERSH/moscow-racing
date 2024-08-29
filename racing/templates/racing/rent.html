@@ -18,15 +18,15 @@
         <form novalidate id="form" action="" method="post" class="form-rent">
             {% csrf_token %}
             <p class="form-p" id="{{ form.ClientName.id_for_label }}"><label class="form-label" for="{{ form.ClientName.id_for_label }}">{{form.ClientName.label}}</label>{{ form.ClientName }}</p>
-            <span id="ClientNameError" class="error"></span>
+            <span id="ClientNameError" class="error">{{form_errors.ClientName.0}}</span>
             <p class="form-p" id="{{ form.ClientEmail.id_for_label }}"><label class="form-label" for="{{ form.ClientEmail.id_for_label }}">{{form.ClientEmail.label}}</label>{{ form.ClientEmail }}</p>
-            <span id="ClientEmailError" class="error"></span>
+            <span id="ClientEmailError" class="error">{{form_errors.ClientEmail.0}}</span>
             <p class="form-p" id="{{ form.RentDate.id_for_label }}"><label class="form-label" for="{{ form.RentDate.id_for_label }}">{{form.RentDate.label}}</label>{{ form.RentDate }}</p>
-            <span id="RentDateError" class="error"></span>
+            <span id="RentDateError" class="error">{{form_errors.RentDate.0}}</span>
             <p class="form-p" id="{{ form.RentTime.id_for_label }}"><label class="form-label" for="{{ form.RentTime.id_for_label }}">{{form.RentTime.label}}</label>{{ form.RentTime }}</p>
-            <span id="RentTimeError" class="error"></span>
+            <span id="RentTimeError" class="error">{{form_errors.RentTime.0}}</span>
             <p class="form-p" id="{{ form.Car.id_for_label }}"><label class="form-label" for="{{ form.Car.id_for_label }}">{{form.Car.label}}</label>{{ form.Car }}</p>
-            <span id="CarError" class="error"></span>
+            <span id="CarError" class="error">{{form_errors.Car.0}}</span>
             <button type="submit" id="rent-button">Отправить</button>
         </form>
     </div>
