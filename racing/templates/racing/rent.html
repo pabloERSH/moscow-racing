@@ -9,9 +9,9 @@
 
 {% block content %}
     {% if success %}
-        <h5 style="color: green;">{{ msg }}</h5>
+        <h5 style="color: green;" id="rent_success">{{ msg }}</h5>
     {% else %}
-        <h5 style="color: red;">{{ msg }}</h5>
+        <h5 style="color: red;" id="rent_fail">{{ msg }}</h5>
     {% endif %}
     <div class="form-container">
         <h1>Аренда трека</h1>

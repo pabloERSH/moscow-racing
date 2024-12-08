@@ -17,10 +17,10 @@
         <div class="form-error">{{ form.non_field_errors }}</div>
         {% for f in form %}
             <p id="{{ f.id_for_label }}"><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</p>
-            <div class="form-error">{{ f.errors }}</div>
+            <div class="form-error" id="error_{{ f.id_for_label }}">{{ f.errors }}</div>
         {% endfor %}
         <p><a href="{% url 'users:login' %}">Есть аккаунт? Войти</a></p>
-        <p><button type="submit">Зарегистрироваться</button></p>
+        <p><button type="submit" id="register_button">Зарегистрироваться</button></p>
     </form>
 </div>
 

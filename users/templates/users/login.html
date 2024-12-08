@@ -14,13 +14,13 @@
         <h1>Авторизация</h1>
         {% csrf_token %}
         <input type="hidden" name="next" value="{{ next }}">
-        <div class="form-error">{{ form.non_field_errors }}</div>
+        <div class="form-error" id="non_field_error">{{ form.non_field_errors }}</div>
         {% for f in form %}
             <p id="{{ f.id_for_label }}"><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}: </label>{{ f }}</p>
-            <div class="form-error">{{ f.errors }}</div>
+            <div class="form-error" id="error_{{ f.id_for_label }}">{{ f.errors }}</div>
         {% endfor %}
         <p><a href="{% url 'users:register' %}">Нет аккаунта? Регистрация</a></p>
-        <p><button type="submit">Войти</button></p>
+        <p><button type="submit" id="login_button">Войти</button></p>
     </form>
 </div>
 

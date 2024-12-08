@@ -4,41 +4,27 @@ from django.contrib.auth.forms import AuthenticationForm
 
 
 class LoginUserForm(AuthenticationForm):
+    username = forms.CharField(label='Логин', error_messages={'required': 'Введите логин!'}, widget=forms.TextInput(attrs={'class': 'form-input', 'id': 'id_form_username'}))
+    password = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-input', 'id': 'id_form_password'}),
+                               error_messages={'required': 'Введите пароль!'})
     class Meta:
         model = get_user_model()
         fields = ['username', 'password']
-        labels = {
-            'username': 'Логин: ',
-            'password': 'Пароль: '
-        }
-        error_messages = {
-            'username': {'required': 'Введите логин!'},
-            'password': {'required': 'Введите пароль!'}
-        }
 
 
 class RegisterUserForm(forms.ModelForm):
-    username = forms.CharField(label='Логин: ',
-                               error_messages={'required': 'Введите логин!'})
-    password = forms.CharField(label='Пароль: ', widget=forms.PasswordInput(attrs={'class': 'form-input'}),
+    username = forms.CharField(label='Логин: ', error_messages={'required': 'Введите логин!'}, widget=forms.TextInput(attrs={'id': 'id_form_username'}))
+    email = forms.CharField(label= 'Почта: ', widget=forms.TextInput(attrs={'id': 'id_form_email'}), error_messages={'required': 'Введите почту!'})
+    first_name = forms.CharField(label= 'Имя: ', widget=forms.TextInput(attrs={'id': 'id_form_first_name'}), required=False)
+    last_name = forms.CharField(label= 'Фамилия: ', widget=forms.TextInput(attrs={'id': 'id_form_last_name'}), required=False)
+    password = forms.CharField(label='Пароль: ', widget=forms.PasswordInput(attrs={'class': 'form-input', 'id': 'id_form_password'}),
                                error_messages={'required': 'Введите пароль!'})
-    password2 = forms.CharField(label='Повтор пароля: ', widget=forms.PasswordInput(attrs={'class': 'form-input'}),
+    password2 = forms.CharField(label='Повтор пароля: ', widget=forms.PasswordInput(attrs={'class': 'form-input', 'id': 'id_form_password2'}),
                                 error_messages={'required': 'Повторите пароль!'})
 
     class Meta:
         model = get_user_model()
         fields = ['username', 'email', 'first_name', 'last_name', 'password', 'password2']
-        labels = {
-            'email': 'Почта: ',
-            'first_name': 'Имя: ',
-            'last_name': 'Фамилия: '
-        }
-        error_messages = {
-            'username': {'required': 'Введите логин!'},
-            'email': {'required': 'Введите email!'},
-            'password': {'required': 'Введите пароль!'},
-            'password2': {'required': 'Повторите пароль!'}
-        }
 
     def clean_password2(self):
         cd = self.cleaned_data
